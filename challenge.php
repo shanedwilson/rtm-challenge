@@ -43,6 +43,28 @@
           '<div class="result-line">' . 'Star Count:  ' . $result->stargazers_count . '</div>' .
         '</div>';
     }
-    print_r($languages);
+    
+    $languages = array_replace($languages,array_fill_keys(array_keys($languages, null),''));
+    $newLanguages = array_count_values($languages);
+    asort($newLanguages);
+    $descNewLanguages = array_reverse($newLanguages);
+
+    echo '<h1>' . 'Summary Of Languages Used' . '</h1>';
+
+    echo '<table class="summary-container">' .
+            '<tr>' .
+              '<th>Language</th>' .
+              '<th>Count</th>' . 
+            '</tr>' ;
+
+    foreach($descNewLanguages as $key => $value) {
+      echo
+        '<tr>' .
+          '<td>' . $key . '</td>' .
+          '<td>' . $value . '</td>' .
+        '</tr>';
+    }
+
+    echo '</table>';
   }
   ?>
