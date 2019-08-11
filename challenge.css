@@ -1,0 +1,15 @@
+.result {
+  width: 60%;
+  margin-top: 2%;
+  margin-left: 5%;
+  border: 1px solid;
+  border-radius: 16px;
+}
+
+h1, h3, form, .results-container {
+  text-align: center;
+}
+
+.result-line {
+  padding: 1%;
+}
