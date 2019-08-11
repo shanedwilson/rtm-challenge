@@ -18,6 +18,17 @@ h1, h3, form, .results {
   margin: auto;
 }
 
-.results-container {
+.result {
   margin: auto;
+  margin-bottom: 10px;
+  background-color: ivory;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 50px 0;
+}
+
+td, th {
+  padding: 10px 0;
 }
