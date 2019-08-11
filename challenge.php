@@ -68,11 +68,19 @@
           '</tr>' ;
 
   foreach($descNewLanguages as $key => $value) {
+    if($key !== '') {
+      echo
+        '<tr>' .
+          '<td>' . $key . '</td>' .
+          '<td>' . $value . '</td>' .
+        '</tr>';
+    } else {
     echo
       '<tr>' .
-        '<td>' . $key . '</td>' .
+        '<td>' . 'Unknow' . '</td>' .
         '<td>' . $value . '</td>' .
       '</tr>';
+    }
   }
 
   echo '</table>';
