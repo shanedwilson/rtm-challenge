@@ -77,16 +77,6 @@
 
   echo '</table>';
 
-  // If there's no page set, default is page 1
-  $page = isset($_GET['page']) ? $_GET['page'] : 1;
-
-  // Set number of results per page
-  $recordsPerPage = 3;
-
-  //this is how to get number of rows returned
-  $num = count($results);
-
-
 //HTML for query results
   foreach ($results as $result) {
     echo 
