@@ -21,50 +21,70 @@
 
   <?php
   require __DIR__ . '/vendor/autoload.php';
+
   $api = new Milo\Github\Api;
 
+//Grabbing input field for q header
   if (!empty($_GET['q'])) {
     $response = $api->get(
         '/search/repositories/' , [
           'q' => filter_input(INPUT_GET, 'q', FILTER_SANITIZE_STRING)
         ]
     );
-    $repositories = $api->decode($response);
-    $results = $repositories->items;
-    $languages = array();
+  }
 
-    foreach ($results as $result) {
-      $languages[] = $result->language;
-      echo 
-        '<div class="result">' .
-          '<h3><a href='. $result->html_url . '>' .  $result->name . '</a></h3>' .
-          '<div class="result-line">' . 'User Name: '. $result->owner->login . '</div>' .
-          '<div class="result-line">' . 'Description: ' . $result->description . '</div>' .
-          '<div class="result-line">' . 'Star Count:  ' . $result->stargazers_count . '</div>' .
-        '</div>';
-    }
-    
-    $languages = array_replace($languages,array_fill_keys(array_keys($languages, null),''));
-    $newLanguages = array_count_values($languages);
-    asort($newLanguages);
-    $descNewLanguages = array_reverse($newLanguages);
+//Formatting api response
+  $repositories = $api->decode($response);
+  $results = $repositories->items;
 
-    echo '<h1>' . 'Summary Of Languages Used' . '</h1>';
+//Ordering results array by number of stars
+  function sort_results_by_stars($a, $b) {
+    if($a->stargazers_count == $b->stargazers_count){ return 0 ; }
+    return ($a->stargazers_count > $b->stargazers_count) ? -1 : 1;
+  }
 
-    echo '<table class="summary-container">' .
-            '<tr>' .
-              '<th>Language</th>' .
-              '<th>Count</th>' . 
-            '</tr>' ;
+  usort($results, 'sort_results_by_stars');
 
-    foreach($descNewLanguages as $key => $value) {
-      echo
-        '<tr>' .
-          '<td>' . $key . '</td>' .
-          '<td>' . $value . '</td>' .
-        '</tr>';
-    }
+//Making array of languages used
+  $languages = array();
 
-    echo '</table>';
+  foreach ($results as $result) {
+    $languages[] = $result->language;
+  }
+
+//Counting and sorting languages
+  $languages = array_replace($languages,array_fill_keys(array_keys($languages, null),''));
+  $newLanguages = array_count_values($languages);
+  asort($newLanguages);
+  $descNewLanguages = array_reverse($newLanguages);
+
+//HTML for languages table
+  echo '<h1>' . 'Summary Of Languages Used' . '</h1>';
+
+  echo '<table class="summary-container">' .
+          '<tr>' .
+            '<th>Language</th>' .
+            '<th>Count</th>' . 
+          '</tr>' ;
+
+  foreach($descNewLanguages as $key => $value) {
+    echo
+      '<tr>' .
+        '<td>' . $key . '</td>' .
+        '<td>' . $value . '</td>' .
+      '</tr>';
+  }
+
+  echo '</table>';
+
+//HTML for query results
+  foreach ($results as $result) {
+    echo 
+      '<div class="result">' .
+        '<h3><a href='. $result->html_url . '>' .  $result->name . '</a></h3>' .
+        '<div class="result-line">' . 'User Name: '. $result->owner->login . '</div>' .
+        '<div class="result-line">' . 'Description: ' . $result->description . '</div>' .
+        '<div class="result-line">' . 'Star Count:  ' . $result->stargazers_count . '</div>' .
+      '</div>';
   }
   ?>
