@@ -5,6 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <link rel="stylesheet" href="challenge.css" type="text/css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       <title>RTM Challenge</title>
     </head>
     <body>
@@ -13,12 +14,19 @@
         <img src="https://media.licdn.com/dms/image/C4D0BAQHXjm0SLKQKRw/company-logo_200_200/0?e=2159024400&v=beta&t=wbXOgwBnQEfKYnWoWPZJs8leKvby-nuoalXxWOgK2mE"
                   alt="RTM Studios Logo">
       </div>
-      <!-- <h1>Github Search</h1> -->
-
-      <form method="get">
-        <span class="form-label">Search Github Repositories</span> <input class="input-field" type ="text" name="q" id="q">
-        <input type="submit">
-      </form>
+      <div class="form-container mt-3 mb-3 text-center">
+        <form method="get form-inline justify-content-center">
+          <div class="form-group row">
+            <label for="searchGtihub" class="col-form-label text-light">Search Github Repositories</label>
+            <div class="row ml-3">
+              <input type="text" class="form-control input-sm" id="q" aria-describedby="searchGithub" name="q" placeholder="wrench-it">
+            </div>
+          </div>
+          <div class="w-50 text-center">
+            <button type="submit" class="btn btn-secondary">Submit</button>
+          </div>
+        </form>
+      </div>  
 
     </body>
   </html>
