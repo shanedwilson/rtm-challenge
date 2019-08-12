@@ -6,7 +6,17 @@
   border-radius: 16px;
 }
 
-h1, h3, form, .results {
+.form-label {
+  color: white;
+}
+
+form {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  font-size: 1.5rem;
+}
+
+h1, h3, form, .results, .img-container {
   text-align: center;
 }
 
@@ -18,10 +28,25 @@ h1, h3, form, .results {
   margin: auto;
 }
 
+.summary {
+  margin-bottom: 1%;
+}
+
+.summary-table {
+  width: 20%;
+  border: 1px solid;
+  border-radius: 16px;
+  margin-top: 20px;
+  background-color: ivory;
+  opacity: .7;
+  margin: auto;
+}
+
 .result {
   margin: auto;
   margin-bottom: 10px;
   background-color: ivory;
+  opacity: .7;
 }
 
 table {
@@ -31,4 +56,18 @@ table {
 
 td, th {
   padding: 10px 0;
+}
+
+body {
+  background:  linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5)),
+                url('https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/946534_10151446736447012_1651771824_n.jpg?_nc_cat=110&_nc_oc=AQm58ZUI_u0mx1GmlP9gf1b9iUYGlvPQro4Kv6dZnf9epKcTqJ9Ncl3TNEf-2cGdEz2gq7H9WXjJuHDzQGqTRvhF&_nc_ht=scontent-atl3-1.xx&oh=eed4a5c1e7dc48944cd9d9230ad319e5&oe=5DEA7256');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  background-size: cover;
+  min-height: 100%;
+}
+
+.input-field {
+  width: 25%;
 }

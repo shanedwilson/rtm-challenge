@@ -13,10 +13,10 @@
         <img src="https://media.licdn.com/dms/image/C4D0BAQHXjm0SLKQKRw/company-logo_200_200/0?e=2159024400&v=beta&t=wbXOgwBnQEfKYnWoWPZJs8leKvby-nuoalXxWOgK2mE"
                   alt="RTM Studios Logo">
       </div>
-      <h1>Github Search</h1>
+      <!-- <h1>Github Search</h1> -->
 
       <form method="get">
-        Search Github <input type ="text" name="q" id="q">
+        <span class="form-label">Search Github Repositories</span> <input class="input-field" type ="text" name="q" id="q">
         <input type="submit">
       </form>
 
@@ -63,13 +63,14 @@
   $descNewLanguages = array_reverse($newLanguages);
 
 //HTML for languages table
-  echo '<h1>' . 'Summary Of Languages Used' . '</h1>';
-
-  echo '<table class="summary-container">' .
+  echo '<div class="summary">' .
+       '<div class="summary-table">'.
+        '<h1>' . 'Summary Of Languages Used' . '</h1>' .
+        '<table class="summary-container">' .
           '<tr>' .
             '<th>Language</th>' .
             '<th>Count</th>' . 
-          '</tr>' ;
+          '</tr>';
 
   foreach($descNewLanguages as $key => $value) {
     if($key !== '') {
@@ -87,7 +88,9 @@
     }
   }
 
-  echo '</table>';
+  echo '</table>' .
+        '</div>' .
+        '</div>';
 
 //HTML for query results
   foreach ($results as $result) {
