@@ -57,8 +57,8 @@ td, th {
 }
 
 body {
-  background:  linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5)),
-                url('https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/946534_10151446736447012_1651771824_n.jpg?_nc_cat=110&_nc_oc=AQm58ZUI_u0mx1GmlP9gf1b9iUYGlvPQro4Kv6dZnf9epKcTqJ9Ncl3TNEf-2cGdEz2gq7H9WXjJuHDzQGqTRvhF&_nc_ht=scontent-atl3-1.xx&oh=eed4a5c1e7dc48944cd9d9230ad319e5&oe=5DEA7256');
+  background:  linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3)),
+                url('https://scontent-atl3-1.xx.fbcdn.net/v/t31.0-8/25311411_10155671626607012_8303625838189341952_o.jpg?_nc_cat=108&_nc_oc=AQlqjVVuGtMM39gtlht48N-gV9ayDg88c0_yfhdspH42_LLiIUjFkSh9lEa6tvl5-j7q4iuaAsd3x3I6-f7JwqvK&_nc_ht=scontent-atl3-1.xx&oh=a266fadcd083a10ecd86ece8e0d164df&oe=5DD96097');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center; 
