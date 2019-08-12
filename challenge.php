@@ -9,7 +9,11 @@
     </head>
     <body>
 
-      <h1>RTM Github Search</h1>
+      <div class="img-container">
+        <img src="https://media.licdn.com/dms/image/C4D0BAQHXjm0SLKQKRw/company-logo_200_200/0?e=2159024400&v=beta&t=wbXOgwBnQEfKYnWoWPZJs8leKvby-nuoalXxWOgK2mE"
+                  alt="RTM Studios Logo">
+      </div>
+      <h1>Github Search</h1>
 
       <form method="get">
         Search Github <input type ="text" name="q" id="q">
