@@ -10,20 +10,20 @@
     </head>
     <body>
 
-      <div class="img-container">
+      <div class="img-container mt-3">
         <img src="https://media.licdn.com/dms/image/C4D0BAQHXjm0SLKQKRw/company-logo_200_200/0?e=2159024400&v=beta&t=wbXOgwBnQEfKYnWoWPZJs8leKvby-nuoalXxWOgK2mE"
-                  alt="RTM Studios Logo">
+                  alt="RTM Studios Logo" class="shadow">
       </div>
       <div class="form-container mt-3 mb-3 text-center">
         <form method="get form-inline justify-content-center">
           <div class="form-group row">
             <label for="searchGtihub" class="col-form-label text-light">Search Github Repositories</label>
             <div class="row ml-3">
-              <input type="text" class="form-control input-sm" id="q" aria-describedby="searchGithub" name="q" placeholder="wrench-it">
+              <input type="text" class="form-control input-sm shadow" id="q" aria-describedby="searchGithub" name="q" placeholder="wrench-it">
             </div>
           </div>
           <div class="w-50 text-center">
-            <button type="submit" class="btn btn-secondary">Submit</button>
+            <button type="submit" class="btn btn-secondary shadow">Submit</button>
           </div>
         </form>
       </div>  
@@ -72,12 +72,12 @@
 
 //HTML for languages table
   echo '<div class="summary">' .
-       '<div class="summary-table">'.
+       '<div class="card summary-table border border-secondary rounded shadow">'.
         '<h1>' . 'Summary Of Languages Used' . '</h1>' .
-        '<table class="summary-container">' .
+        '<table class="summary-container table-striped table-bordered mb-3">' .
           '<tr>' .
-            '<th>Language</th>' .
-            '<th>Count</th>' . 
+            '<th scope="col">Language</th>' .
+            '<th scope="col">Count</th>' . 
           '</tr>';
 
   foreach($descNewLanguages as $key => $value) {
@@ -103,8 +103,8 @@
 //HTML for query results
   foreach ($results as $result) {
     echo 
-      '<div class="result">' .
-        '<h3><a href='. $result->html_url . '>' .  $result->name . '</a></h3>' .
+      '<div class="result card shadow border border-secondary rounded shadow">' .
+        '<h3><a target="_blank" href='. $result->html_url . '>' .  $result->name . '</a></h3>' .
         '<div class="result-line">' . 'User Name: '. $result->owner->login . '</div>' .
         '<div class="result-line">' . 'Description: ' . $result->description . '</div>' .
         '<div class="result-line">' . 'Star Count:  ' . $result->stargazers_count . '</div>' .
