@@ -11,11 +11,14 @@ language.
 b. The summary table should be ordered with the most popular programming
 language at the top and least popular programming language at the bottom.
 
-* Results are displaying in order of most stars.
+* Repo results are displaying in order of most stars.
+
+* User results are displaying by score.
 
 ## Tech Used
 * PHP
 * Xampp
+* Composer
 * milo/github-api
 * Boostrap
 * Github API
@@ -32,6 +35,8 @@ language at the top and least popular programming language at the bottom.
 
 * Place the repo in XAMPP/htdocs
 
+* At root of project ```composer require milo/github-api```
+
 * Start XAMPP, click "Manage Servers," start "Apache Server"
 
-* In your browser go to "http://localhost/rtm-challenge/challenge.php"
+* In your browser go to ```http://localhost/rtm-challenge/challenge.php```
