@@ -19,7 +19,7 @@
           <div class="form-group row">
             <label for="searchGtihub" class="col-form-label text-light">Search Github Repositories</label>
             <div class="row ml-3">
-              <input type="text" class="form-control input-sm shadow" id="q" aria-describedby="searchGithub" name="q" placeholder="wrench-it">
+              <input type="text" class="form-control input-sm shadow" id="q" aria-describedby="searchGithub" name="q">
             </div>
           </div>
           <div class="w-50 text-center">
@@ -43,71 +43,71 @@
           'q' => filter_input(INPUT_GET, 'q', FILTER_SANITIZE_STRING)
         ]
     );
-  }
 
-//Formatting api response
-  $repositories = $api->decode($response);
-  $results = $repositories->items;
+    //Formatting api response
+    $repositories = $api->decode($response);
+    $results = $repositories->items;
 
-//Ordering results array by number of stars
-  function sort_results_by_stars($a, $b) {
-    if($a->stargazers_count == $b->stargazers_count){ return 0 ; }
-    return ($a->stargazers_count > $b->stargazers_count) ? -1 : 1;
-  }
+    //Ordering results array by number of stars
+    function sort_results_by_stars($a, $b) {
+      if($a->stargazers_count == $b->stargazers_count){ return 0 ; }
+      return ($a->stargazers_count > $b->stargazers_count) ? -1 : 1;
+    }
 
-  usort($results, 'sort_results_by_stars');
+    usort($results, 'sort_results_by_stars');
 
-//Making array of languages used
-  $languages = array();
+    //Making array of languages used
+    $languages = array();
 
-  foreach ($results as $result) {
-    $languages[] = $result->language;
-  }
+    foreach ($results as $result) {
+      $languages[] = $result->language;
+    }
 
-//Counting and sorting languages
-  $languages = array_replace($languages,array_fill_keys(array_keys($languages, null),''));
-  $newLanguages = array_count_values($languages);
-  asort($newLanguages);
-  $descNewLanguages = array_reverse($newLanguages);
+    //Counting and sorting languages
+    $languages = array_replace($languages,array_fill_keys(array_keys($languages, null),''));
+    $newLanguages = array_count_values($languages);
+    asort($newLanguages);
+    $descNewLanguages = array_reverse($newLanguages);
 
-//HTML for languages table
-  echo '<div class="summary">' .
-       '<div class="card summary-table border border-secondary rounded shadow">'.
-        '<h1>' . 'Summary Of Languages Used' . '</h1>' .
-        '<table class="summary-container table-striped table-bordered mb-3">' .
+    //HTML for languages table
+    echo '<div class="summary">' .
+        '<div class="card summary-table border border-secondary rounded shadow">'.
+          '<h1>' . 'Summary Of Languages Used' . '</h1>' .
+          '<table class="summary-container table-striped table-bordered mb-3">' .
+            '<tr>' .
+              '<th scope="col">Language</th>' .
+              '<th scope="col">Count</th>' . 
+            '</tr>';
+
+    foreach($descNewLanguages as $key => $value) {
+      if($key !== '') {
+        echo
           '<tr>' .
-            '<th scope="col">Language</th>' .
-            '<th scope="col">Count</th>' . 
+            '<td>' . $key . '</td>' .
+            '<td>' . $value . '</td>' .
           '</tr>';
-
-  foreach($descNewLanguages as $key => $value) {
-    if($key !== '') {
+      } else {
       echo
         '<tr>' .
-          '<td>' . $key . '</td>' .
+          '<td>' . 'Unknow' . '</td>' .
           '<td>' . $value . '</td>' .
         '</tr>';
-    } else {
-    echo
-      '<tr>' .
-        '<td>' . 'Unknow' . '</td>' .
-        '<td>' . $value . '</td>' .
-      '</tr>';
+      }
     }
-  }
 
-  echo '</table>' .
-        '</div>' .
+    echo '</table>' .
+          '</div>' .
+          '</div>';
+
+    //HTML for query results
+    foreach ($results as $result) {
+      echo 
+        '<div class="result card shadow border border-secondary rounded shadow">' .
+          '<h3><a target="_blank" href='. $result->html_url . '>' .  $result->name . '</a></h3>' .
+          '<div class="result-line">' . 'User Name: '. $result->owner->login . '</div>' .
+          '<div class="result-line">' . 'Description: ' . $result->description . '</div>' .
+          '<div class="result-line">' . 'Star Count:  ' . $result->stargazers_count . '</div>' .
         '</div>';
-
-//HTML for query results
-  foreach ($results as $result) {
-    echo 
-      '<div class="result card shadow border border-secondary rounded shadow">' .
-        '<h3><a target="_blank" href='. $result->html_url . '>' .  $result->name . '</a></h3>' .
-        '<div class="result-line">' . 'User Name: '. $result->owner->login . '</div>' .
-        '<div class="result-line">' . 'Description: ' . $result->description . '</div>' .
-        '<div class="result-line">' . 'Star Count:  ' . $result->stargazers_count . '</div>' .
-      '</div>';
+    }
   }
   ?>
