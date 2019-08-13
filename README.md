@@ -21,7 +21,7 @@ language at the top and least popular programming language at the bottom.
 * Github API
 
 ## Screenshots
-![App Screenshot](https://github.com/shanedwilson/rtm-challenge/blob/readMe/screen-shots/Screen%20Shot%202019-08-12%20at%209.09.17%20PM.png?raw=true)
+![App Screenshot](https://github.com/shanedwilson/rtm-challenge/blob/readMeFix/screen-shots/Screen%20Shot.png?raw=true)
 
 
 ## How to run this project:
