@@ -15,9 +15,15 @@
                   alt="RTM Studios Logo" class="shadow">
       </div>
       <div class="form-container mt-3 mb-3 text-center">
-        <form method="get form-inline justify-content-center">
+        <form method="get form-inline">
           <div class="form-group row">
-            <label for="searchGtihub" class="col-form-label text-light">Search Github Repositories</label>
+            <label for="searchGtihub" class="col-form-label text-light">Search Github By</label>
+            <div class="ml-3 mr-3">
+              <select name="search-type" id="search-type">
+                <option value="repositories">Repositories</option>
+                <option value="users">Users</option>
+              </select>      
+            </div>
             <div class="row ml-3">
               <input type="text" class="form-control input-sm shadow" id="q" aria-describedby="searchGithub" name="q">
             </div>
@@ -35,19 +41,26 @@
   require __DIR__ . '/vendor/autoload.php';
 
   $api = new Milo\Github\Api;
+  $type = '';
 
 //Grabbing input field for q header
   if (!empty($_GET['q'])) {
+
+      if(isset($_GET["search-type"])){
+      $type = $_GET['search-type'];
+    }
+
     $response = $api->get(
-        '/search/repositories/' , [
-          'q' => filter_input(INPUT_GET, 'q', FILTER_SANITIZE_STRING)
-        ]
+      '/search/' . $type . '/' , [
+        'q' => filter_input(INPUT_GET, 'q', FILTER_SANITIZE_STRING)
+      ]
     );
 
     //Formatting api response
     $repositories = $api->decode($response);
     $results = $repositories->items;
-
+    
+    if($type === 'repositories') {
     //Ordering results array by number of stars
     function sort_results_by_stars($a, $b) {
       if($a->stargazers_count == $b->stargazers_count){ return 0 ; }
@@ -98,9 +111,11 @@
     echo '</table>' .
           '</div>' .
           '</div>';
+    }
 
     //HTML for query results
     foreach ($results as $result) {
+      if($type === 'repositories') {
       echo 
         '<div class="result card shadow border border-secondary rounded shadow">' .
           '<h3><a target="_blank" href='. $result->html_url . '>' .  $result->name . '</a></h3>' .
@@ -108,6 +123,17 @@
           '<div class="result-line">' . 'Description: ' . $result->description . '</div>' .
           '<div class="result-line">' . 'Star Count:  ' . $result->stargazers_count . '</div>' .
         '</div>';
+      } else {
+      echo 
+        '<div class="result card shadow border border-secondary rounded shadow">' .
+          '<img class="card-img-top" src=' . $result->avatar_url . 'alt="Card image cap">' .
+          '<div class="result-line card-body">' .
+            '<h3 class="card-title"><a target="_blank" href='. $result->html_url . '>' .  $result->login . '</a></h3>' .
+            '<div class="result-line card-text">' . 'Score:  ' . $result->score . '</div>' .
+          '</div>' .
+        '</div>';
+      }
+
     }
   }
   ?>
