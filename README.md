@@ -1,4 +1,15 @@
 # RTM Take Home Challenge
+Requirements:
+1. Create a webpage that will be used to search Github repositories using the Github API.
+a. The user should be able to enter a search term and view the results.
+b. The results should show the repository name, username, description, and
+number of stars.
+c. The repository result should link to the project page on Github.
+2. Create a summary of all the search results and display it on the page.
+a. The summary table should display the number of repositories per programming
+language.
+b. The summary table should be ordered with the most popular programming
+language at the top and least popular programming language at the bottom.
 
 ## Tech Used
 * PHP
