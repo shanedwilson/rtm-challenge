@@ -8,29 +8,17 @@
 * Github API
 
 ## Screenshots
-![Auth Screenshot](https://github.com/shanedwilson/wrench-it/blob/finalTidyUp/WrenchIt/screenshots/wrench-it-auth.png?raw=true)
-![Home Screenshot](https://github.com/shanedwilson/wrench-it/blob/finalTidyUp/WrenchIt/screenshots/wrench-it-home.png?raw=true)
-![Garage Screenshot](https://github.com/shanedwilson/wrench-it/blob/finalTidyUp/WrenchIt/screenshots/wrench-it-garage.png?raw=true)
-![Links Screenshot](https://github.com/shanedwilson/wrench-it/blob/finalTidyUp/WrenchIt/screenshots/wrench-it-links.png?raw=true)
+![App Screenshot](https://github.com/shanedwilson/rtm-challenge/blob/readMe/screen-shots/Screen%20Shot%202019-08-12%20at%209.09.17%20PM.png?raw=true)
+
 
 ## How to run this project:
 
-* Setup Firebase  
-  -Create a firebase project  
-  -Enable 'Google Authentication'  
-  -Create an apiKeys.js file (an example file exists in the 'helpers' folder)
-  -Copy firebase keys from firebase web app settings into apiKeys.js
+* Install XAMPP 
 
 * Clone or download the repo
 
-* Browse to the repo directory in your terminal
+* Place the repo in XAMPP/htdocs
 
-* In the ClientApp folder of the project run ```npm install``` to install necessary dependencies
+* Start XAMPP, click "Manage Servers," start "Apache Server"
 
-* Run the project from Visual Studio
-
-## Thank You To:
-* Nathan Gonzalez (NSS E8 Backend Chief Badass)
-* Martin Cross (NSS E8 Backend Assistant Badass)
-* Adam Wieckert (NSS E8 Backend Assistant Badass)
-* Marco Crank (Compadre and Wise Counsel)
+* In your browser go to "http://localhost/rtm-challenge/challenge.php"
