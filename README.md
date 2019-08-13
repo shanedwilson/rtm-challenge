@@ -18,6 +18,7 @@ language at the top and least popular programming language at the bottom.
 ## Tech Used
 * PHP
 * Xampp
+* Composer
 * milo/github-api
 * Boostrap
 * Github API
