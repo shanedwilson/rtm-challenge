@@ -32,6 +32,8 @@ language at the top and least popular programming language at the bottom.
 
 * Place the repo in XAMPP/htdocs
 
+* At root of project ```composer require milo/github-api```
+
 * Start XAMPP, click "Manage Servers," start "Apache Server"
 
-* In your browser go to "http://localhost/rtm-challenge/challenge.php"
+* In your browser go to ```http://localhost/rtm-challenge/challenge.php```
