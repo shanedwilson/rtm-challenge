@@ -11,7 +11,9 @@ language.
 b. The summary table should be ordered with the most popular programming
 language at the top and least popular programming language at the bottom.
 
-* Results are displaying in order of most stars.
+* Repo results are displaying in order of most stars.
+
+* User results are displaying by score.
 
 ## Tech Used
 * PHP
