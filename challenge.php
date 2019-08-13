@@ -17,9 +17,10 @@
       <div class="form-container mt-3 mb-3 text-center">
         <form method="get form-inline">
           <div class="form-group row">
-            <label for="searchGtihub" class="col-form-label text-light">Search Github By</label>
+            <label for="searchGtihub" class="col-form-label text-light">Search Github</label>
             <div class="ml-3 mr-3">
               <select name="search-type" id="search-type">
+                <option value="">Search Type</option>
                 <option value="repositories">Repositories</option>
                 <option value="users">Users</option>
               </select>      
@@ -52,7 +53,9 @@
 
     $response = $api->get(
       '/search/' . $type . '/' , [
-        'q' => filter_input(INPUT_GET, 'q', FILTER_SANITIZE_STRING)
+        'q' => filter_input(INPUT_GET, 'q', FILTER_SANITIZE_STRING),
+        'sort' => 'stars',
+        'order' => 'descending',
       ]
     );
 
@@ -60,18 +63,11 @@
     $repositories = $api->decode($response);
     $results = $repositories->items;
     
+    //Check dropdown value for 'repositories' to create summary
     if($type === 'repositories') {
-    //Ordering results array by number of stars
-    function sort_results_by_stars($a, $b) {
-      if($a->stargazers_count == $b->stargazers_count){ return 0 ; }
-      return ($a->stargazers_count > $b->stargazers_count) ? -1 : 1;
-    }
-
-    usort($results, 'sort_results_by_stars');
-
-    //Making array of languages used
     $languages = array();
 
+    //Create array of languages
     foreach ($results as $result) {
       $languages[] = $result->language;
     }
